@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent intent   =    new Intent(context, Settings.class);
+            startActivity(intent);
             return true;
         }
         else if(id == R.id.importfile) {
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(id == R.id.exportfile) {
             this.exportData();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

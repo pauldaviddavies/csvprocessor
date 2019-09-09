@@ -1,6 +1,7 @@
 package com.davies.csvprocessor.segmentclasses;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -26,6 +27,8 @@ public class ExportData extends AsyncTask<String, Void, String>
     private Context context;
     private String filename;
     Gson gson   =   new Gson();
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     public ExportData() {
 
@@ -35,6 +38,9 @@ public class ExportData extends AsyncTask<String, Void, String>
         this.data = data;
         this.context    =   context;
         this.filename = filename;
+
+        sharedPreferences   =   context.getSharedPreferences("csvprocessor", Context.MODE_PRIVATE);
+        editor  =   sharedPreferences.edit();
     }
 
     @Override
@@ -73,7 +79,7 @@ public class ExportData extends AsyncTask<String, Void, String>
                     JSONArray jsonArray1    =   new JSONArray(jsonArray.getString(i));
                     for(int j=0; j<jsonArray1.length(); j++) {
                         fileWriter.append(jsonArray1.getString(j));
-                        fileWriter.append(",");
+                        fileWriter.append(sharedPreferences.getString("delim", ""));
                     }
                     fileWriter.append("\n");
                 }

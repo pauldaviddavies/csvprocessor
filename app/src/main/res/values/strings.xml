@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CSV Processor</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="delimeter_lbl">delimiter </string>
+    <string name="save">Save</string>
 </resources>
